@@ -23,11 +23,30 @@ void kmain(void) {
 
 	// now write the string to the video memory
 
-	while (str[i] != '\0') {
-		// the character's ascii
+	// while (str[i] != '\0') {
+	// 	// the character's ascii
+	// 	video_pointer[j] = str[i];
+	// 	// attribute-byte - light grey on black screen
+	// 	video_pointer[j+1] = 0x07;
+	// 	++i;
+	// 	j += 2;
+	// }
+
+	while (str[i] != ' ')
+	{
 		video_pointer[j] = str[i];
-		// attribute-byte - light grey on black screen
-		video_pointer[j+1] = 0x07;
+		video_pointer[j+1] = 0xf5;
+		++i;
+		j += 2;
+	}
+
+	video_pointer[j] = str[i];
+	video_pointer[j+1] = 0x07;
+
+	while (str[i] != '\0')
+	{
+		video_pointer[j] = str[i];
+		video_pointer[j+1] = 0xf9;
 		++i;
 		j += 2;
 	}
